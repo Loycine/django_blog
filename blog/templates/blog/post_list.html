@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}文章列表-罗宇成的博客{% endblock %}
+
+{% block head %}
+<style type="text/css">
+    li.borderless { list-style: none; }
+
+    .aside-box{
+        margin-bottom: 8px;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); 
+    }
+
+    .aside-title{
+        font-weight:bold; font-size:15px; padding:0px 0px 0;
+    }
+
+    ul li a{
+        line-height: 32px;
+        color: #555666;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+
+    a:visited{
+        text-decoration: none;
+    } 
+
+    h3 a{
+        color:#222226;
+        font-size: 18px;
+        font-weight:bold;
+    }
+
+    .post-list{
+        border-left: 1px solid #fff;
+        min-height: 800px;
+        margin-left: -1px;
+    }
+
+    .post-summary{
+        padding: 5px 5px 5px 5px;
+    }
+
+    .post-summary-tail{
+        padding: 5px, 0;
+        font-size: 12px;
+        text-align: right;
+        color: #999;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <div class=aside-box>
+                    <p class="aside-title">分类专栏<p>
+                    <div class=aside-content>
+                    <ul class="list-group">
+                    {% for category in category_list %}
+                        {% if category.id == category_id%}
+                        <li class="borderless">
+                        {% else %}
+                        <li class="borderless">
+                        {% endif %}
+                            <a href="posts?category_id={{ category.id }}">{{ category.name }}</a>
+                        </li>               
+                    {% endfor %}
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 post-list">
+                <div style="font-weight:bold; font-size:20px; padding:0px 0px 0">
+                    <p>文章列表<p>
+                </div>
+    
+                    {% if post_list %}
+                    {% for post in post_list %}
+                    <div class="post-summary">
+                        <h3>
+                                <a href="posts/{{ post.id }}/">{{ post.title }}</a>
+                        </h3>
+                        <p class="text-muted">
+                            {{post.desc}}
+                        </p>
+                        <div class="post-summary-tail">
+                            <span>编辑时间:{{post.created_time}}</span>
+                            <span>作者:luoyucheng</span>
+                            <br class="visible-xs">
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <p>No posts are available.</p>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}关于-罗宇成的博客{% endblock %}
+
+{% block head %}
+<style>
+    .waves-circle{
+        line-height: 2.5em;
+        border-radius: 50%;
+    }
+
+    .page-about-me{
+        margin-top: 45px;
+        margin-bottom: 45px;
+        padding: 30px 35px!important;
+    }
+
+    .page-about-me .avatar{
+        margin-right: 35px;
+        width: 100px;
+        height: 100px;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    }
+
+    img {
+        border-radius: 50%;
+        max-width: 100%;
+        border: none;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card page-about-me flex-row">
+    <a href="{% url 'blog:index' %}" class="avatar waves-effect waves-circle waves-light"><img src="{% static 'resources/avatar.jpg'%}"></a>
+    <div class="content flex-col">
+        <p><strong>罗宇成</strong></p>
+        <p>华南理工大学软件学院</p>
+        <p>E-mail: <a href="mailto:loycine@163.com">loycine@163.com</a> </p>
+    </div>
+</div>
+
+{% endblock %}

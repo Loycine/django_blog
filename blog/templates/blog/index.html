@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}首页-罗宇成的博客{% endblock %}
+
+{% block head %}
+<style type="text/css">
+    h1 {
+        /* font-size: 35px; */
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <h1>Welcome!</h1>
+    <p>大家好，这是我的博客，它记录了过去的点点滴滴，也希望能给大家带来一定的帮助。有兴趣的话，看看<a href="">我的简历（还没写好吧）</a>。</p>
+    <p><a class="btn btn-primary" href="{% url 'blog:post_list'%}" role="button">查看全部文章</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}文章{% endblock %}
+
+
+{% block content %}
+<h2 class="bd-title">文章列表</h2>
+    
+<div class="row">
+    <div class="col-md-auto order-md-last">
+        <form method="get" class="form-horizontal">
+            
+        </form>
+    </div>
+
+
+    <div class="col">
+        {% if post_list %}
+        {% for post in post_list %}
+        <div class="article-summary">
+            <h3>
+                    <a href="posts/{{ post.id }}/">{{ post.title }}</a>
+            </h3>
+            <p class="text-muted">
+                {{post.desc}}
+            </p>
+            <div class="article-summary-tail">
+                <span>编辑时间:{{post.created_time}}</span>
+                <span>作者:luoyucheng</span>
+                <br class="visible-xs">
+                <span>
+                    <a href="posts/{{ post.id }}">查看全文</a>
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+            <p>No posts are available.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
